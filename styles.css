@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/Avenir Next.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/Avenir Next.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.navmenu {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .navmenu {
+        flex-direction: column; /* Stack items vertically */
+        width: 100%;
+        position: relative; /* Change to relative for mobile */
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+body {
+    font-family: 'Avenir Next', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: gray;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* General list styles */
+ul, ol {
+    padding: 0; /* Remove default padding */
+    margin: 20px 0; /* Add margin for spacing */
+    list-style-position: inside; /* Position bullets/numbers inside the list */
+}
+
+/* Unordered list styles */
+ul {
+    list-style-type: none; /* Remove default bullets */
+}
+
+ul li {
+    position: relative; /* Position for custom bullet */
+    padding-left: 20px; /* Space for custom bullet */
+    margin-bottom: 10px; /* Space between list items */
+}
+
+ul li::before {
+    content: ''; /* Custom bullet */
+    position: absolute;
+    left: 0; /* Position it to the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    width: 8px; /* Bullet size */
+    height: 8px; /* Bullet size */
+    background-color: crimson; /* Bullet color */
+    border-radius: 50%; /* Make it circular */
+}
+
+/* Ordered list styles */
+ol {
+    margin-left: 20px; /* Indent ordered list */
+}
+
+ol li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+/* Optional: Add hover effect for list items */
+ul li:hover, ol li:hover {
+    background-color: transparent; /* Light gray background on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* General link styles */
+a {
+    color: crimson; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Add padding for a button-like effect */
+    border-radius: 5px; /* Rounded corners */
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for general links */
+a:hover {
+    background-color: rgba(220, 20, 60, 0.1); /* Light crimson background on hover */
+    color: darkred; /* Darker text color on hover */
+}
+
+/* Active link style */
+a.active {
+    background-color: crimson; /* Background for active link */
+    color: white; /* White text for active link */
+}
+
+/* Optional: Style links in lists */
+ul li a, ol li a {
+    display: inline-block; /* Make links behave like buttons */
+    margin: 5px 0; /* Space between links */
+}
+
+nav {
+    background: darkgray;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none; /* Ensure no bullets are shown in navigation */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+    display: inline; /* Display list items inline */
+    margin: 0 15px; /* Space between items */
+}
+
+nav ul li::before {
+    content: none; /* Remove any custom bullet */
+}
+
+nav ul li a {
+    display: inline-block; /* Make the link behave like a button */
+    padding: 10px 20px; /* Add padding for button effect */
+    color: #ffffff; /* Text color */
+    background-color: #dc143c; /* Button background color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Remove background on hover for navigation links */
+nav ul li a:hover {
+    background-color: #840c24;
+    color: #ffffff;
+}
+
+nav ul li a.active {
+    background-color: #800000; /* Active button color */
+    font-weight: bold; /* Make active button bold */
+}
+
+main {
+    padding: 20px;
+    background: #ffffff;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: gray;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
