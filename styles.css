@@ -96,7 +96,7 @@ a {
     color: crimson; /* Link color */
     text-decoration: none; /* Remove underline */
     padding: 5px 10px; /* Add padding for a button-like effect */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 10px; /* Rounded corners */
     transition: color 0.3s; /* Smooth transition for hover effects */
 }
 
@@ -115,7 +115,6 @@ a.active {
 /* Optional: Style links in lists */
 ul li a, ol li a {
     display: inline-block; /* Make links behave like buttons */
-    margin: 5px 0; /* Space between links */
 }
 
 nav {
