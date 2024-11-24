@@ -17,6 +17,10 @@
     justify-content: center;
 }
 
+.navmenu li {
+    margin: 5px
+}
+
 @media (max-width: 768px) {
     .navmenu {
         flex-direction: column; /* Stack items vertically */
@@ -26,8 +30,11 @@
         justify-content: center; /* Center items horizontally */
         align-items: center; /* Center items vertically */
         list-style: none;
-        padding: 0;
-        margin: 0;
+        margin: 0px
+    }
+    
+    .navmenu li {
+        margin: 5px
     }
 }
 
