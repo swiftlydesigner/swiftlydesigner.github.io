@@ -53,6 +53,15 @@ header {
     text-align: center;
 }
 
+.degreeHeader {
+    margin: 0px;
+}
+
+.degreeContent {
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
 /* General list styles */
 ul, ol {
     padding: 0; /* Remove default padding */
