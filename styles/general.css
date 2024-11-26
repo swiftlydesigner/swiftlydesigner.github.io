@@ -1,15 +1,29 @@
 @font-face {
-    font-family: 'Avenir Next';
-    src: url('fonts/Avenir Next.ttf') format('truetype');
+    font-family: 'Hack';
+    src: url('../fonts/hack/Hack-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir Next';
-    src: url('fonts/Avenir Next.ttf') format('truetype');
+    font-family: 'Hack';
+    src: url('../fonts/hack/Hack-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('../fonts/hack/Hack-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('../fonts/hack/Hack-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
 }
 
 .navmenu {
@@ -192,4 +206,10 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+time {
+    font-size-adjust: 0.5;
+    padding: 0px;
+    margin: 0px;
 }
