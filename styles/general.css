@@ -221,3 +221,28 @@ footer {
 #updated {
     font-weight: bold
 }
+
+.inline-image {
+    width: 75%; /* Set width to 75% of the screen */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Make it a block element */
+    margin: 0 auto; /* Center the image */
+}
+
+table {
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse borders */
+}
+th, td {
+    border: 1px solid #ddd; /* Add border to table cells */
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+}
+th {
+    background-color: crimson; /* Light gray background for header */
+    color: white
+}
+tr:hover {
+    background-color: rgba(211, 211, 211, 0.5); /* Highlight row on hover */
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
