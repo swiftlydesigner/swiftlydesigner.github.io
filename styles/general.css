@@ -208,8 +208,16 @@ footer {
     width: 100%;
 }
 
-time {
+#time {
     font-size-adjust: 0.5;
     padding: 0px;
     margin: 0px;
+}
+
+#created {
+    font-style: italic
+}
+
+#updated {
+    font-weight: bold
 }
