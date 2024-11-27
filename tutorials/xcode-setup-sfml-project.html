@@ -170,7 +170,7 @@
                     <img src="../images/xcode/sfml/xcode-sfml-filter-hsp.png" alt="Xcode Select Filter Field" class="inline-image"/>
                     <li>Double click on the <b>System Header Search Paths</b> line.</li>
                     <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit.png" alt="Xcode Select Header Search Paths" class="inline-image"/>
-                    <li>Double click on the top line of the pop-over. Type <code>/opt/homebrew/include/</code>. If you manually located the lib folder, it will be the same root path upto <code>lib</code>. Simply change <code>lib</code> to <code>include</code>. For example, if your path is <code>/home/user1/sfml/<b>lib</b>/...</code>, your include folder should be <code>/home/user1/sfml/<b>include</b></code>.</li>
+                    <li>Double click on the top line of the pop-over. Type <code>/opt/homebrew/include/</code>. If you manually located the lib folder, it will be the same root path up to <code>lib</code>. Simply change <code>lib</code> to <code>include</code>. For example, if your path is <code>/home/user1/sfml/<b>lib</b>/...</code>, your include folder should be <code>/home/user1/sfml/<b>include</b></code>.</li>
                     <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit-line.png" alt="Xcode Select Pop-over" class="inline-image"/>
                     <li>Click the main window and your project will be configured. You should be ready to use SFML now. Build the project with <kbd>Command</kbd> + <kbd>B</kbd>.</li>
                 </ol>
@@ -233,7 +233,7 @@ int main(int argc, const char * argv[]) {
                 <h2>Troubleshooting</h2>
                 <h3>Cannot Locate SFML</h3>
                 <ol>
-                    <li>Attempt to locate SFML by running brew info.</li>
+                    <li>Attempt to locate SFML by running `brew info`.</li>
                     <div class="terminal">
                         <button class="copy-button" onclick="copyToClipboard(this,'sfmlInfo')">Copy</button>
                         <pre id="sfmlInfo">brew info sfml</pre>
@@ -253,7 +253,7 @@ int main(int argc, const char * argv[]) {
                         What it does:
                         <ol style="margin-top:3px;">
                             <li>Search from the root path (/).</li>
-                            <li>Look for a file type (-type f) aka. ignore directories.</li>
+                            <li>Look for a file type (-type f) and ignore directories.</li>
                             <li>Match the pattern (libsfml-*.dylib) ignoring case.</li>
                         </ol>
                     <div class="terminal">
