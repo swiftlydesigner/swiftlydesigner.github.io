@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tutorials > Setup SFML Xcode</title>
+        
+<!--    Include Styles     -->
+        <link rel="stylesheet" href="../styles/general.css">
+        <link rel="stylesheet" href="../styles/terminal.css">
+            
+<!--   Include Scripts   -->
+        <script src="../scripts/terminal.js" defer></script>
+    </head>
+    
+    <body>
+        <header>
+            <h1>How to Setup SFML in macOS (Intel & M-series)</h1>
+            <p>SFML Tutorials</p>
+            <p><b>Estimated Time: 10-30 min | Difficulty: Easy | SFML, Homebrew, macOS</b></p>
+        </header>
+        
+        <nav class="navbar">
+            <ul class="navmenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a>></a></li>
+                <li><a href="../tutorials.html">Tech Tutorials</a></li>
+                <li><a>></a></li>
+                <li><a href="xcode-setup-sfml-project.html" class="active">Setup SFML in macOS</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p>In this tutorial, we will install SFML and create an Xcode project which builds and debugs our program. This will work on Intel and M-series Macs. We will be using Homebrew, a package manager for macOS. It should take 5-15 minutes once you have all required components installed.</p>
+                <p>SFML is an open-source, cross-platform multimedia library to provide a simple interface with graphics, audio, and input control in C++. SFML only supports 2-D graphics natively. View the details here: <a href="https://www.sfml-dev.org/">https://www.sfml-dev.org/</a></p>
+                <h3>Required Software:</h3>
+                <ul>
+                    <li>Homebrew</li>
+                    <li>Xcode</li>
+                </ul>
+            </section>
+            <section id="step-1">
+                <h2>Step 1 - Install Homebrew <span id="time">(~15 minutes)</span></h2>
+                <p>If you do not have Homebrew installed, please open Terminal and run the following command. You can view full installation instructions at<a href="brew.sh">brew.sh.</a></p>
+                <p style="color:red;"><b>Warning: You will need sudo privileges when installing Homebrew.</b></p>
+                <div class="terminal">
+                    <button class="copy-button" onclick="copyToClipboard(this,'brewInstall')">Copy</button>
+                    <pre id="brewInstall">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
+                </div>
+            </section>
+            
+            <section id="step-2">
+                <h2>Step 2 - Install SFML <span id="time">(1-5 minutes)</span></h2>
+                <p>Use Homebrew to download and install SFML.</p>
+                <div class="terminal">
+                    <button class="copy-button" onclick="copyToClipboard(this,'sfmlInstall')">Copy</button>
+                    <pre id="sfmlInstall">brew install sfml</pre>
+                </div>
+            </section>
+            
+            <section id="step-3">
+                <h2>Step 3 - Create an Xcode Project <span id="time">(1 minute)</span></h2>
+                <ol>
+                    <li>Open Xcode.</li>
+                    <li>Select <b>Create New Project...</b></li>
+                    <img src="../images/xcode/xcode-new-proj.png" alt="Xcode New Project Image" class="inline-image">
+                    <li>Navigate to the <b>macOS</b> tab and select the <b>Command Line Tool</b> option. Then, click <b>Next</b>.</li>
+                    <img src="../images/xcode/xcode-new-clt.png" alt="Xcode New CLT Image" class="inline-image">
+                    <li>Give the <b>Product Name</b>, <b>Team</b>, and <b>Organization Identifier</b> (typically the reverse of a domain; i.e., com.example). Ensure the Language is set to C++. Then, click <b>Next</b>.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-name.png" alt="Xcode New CLT Image" class="inline-image">
+                </ol>
+            </section>
+            
+            <section id="step-4">
+                <h2>Step 4 - Link Libraries <span id="time">(5 minutes)</span></h2>
+                <p>In this section, we will link the libraries. See below for the location of the libraries and their purpose.</p>
+                <p>If you cannot find the libraries, please see<a href="#troubleshooting">Troubleshooting</a>for help!</a></p>
+                <h3>Library Table</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>M-series Mac Library Path</th>
+                            <th>Intel Mac Library Path</th>
+                            <th>Library Name</th>
+                            <th>Library Purpose</th>
+                            <th>Is Required?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>/opt/homebrew/lib/libsfml-system.dylib</td>
+                            <td>/usr/local/Homebrew/lib/libsfml-system.dylib</td>
+                            <td>libsfml-system</td>
+                            <td>System utilities and threading</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>/opt/homebrew/lib/libsfml-window.dylib</td>
+                            <td>/usr/local/Homebrew/lib/libsfml-window.dylib</td>
+                            <td>libsfml-window</td>
+                            <td>Window management and input handling</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>/opt/homebrew/lib/libsfml-graphics.dylib</td>
+                            <td>/usr/local/Homebrew/lib/libsfml-graphics.dylib</td>
+                            <td>libsfml-graphics</td>
+                            <td>2D graphics rendering</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>/opt/homebrew/lib/libsfml-network.dylib</td>
+                            <td>/usr/local/Homebrew/lib/libsfml-network.dylib</td>
+                            <td>libsfml-network</td>
+                            <td>Networking functionality</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>/opt/homebrew/lib/libsfml-audio.dylib</td>
+                            <td>/usr/local/Homebrew/lib/libsfml-audio.dylib</td>
+                            <td>libsfml-audio</td>
+                            <td>Audio playback and processing</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Now, that we know what the libraries do, lets link the libraries.</p>
+                <ol>
+                    <li>Click the + icon in the <b>Frameworks and Libraries</b> section.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-link-lib.png" alt="Xcode Link Library" class="inline-image"/>
+                    <li>You will now see this screen which shows macOS Frameworks. Click <b>Add Other...</b> and select <b>Add Files</b>.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-link-lib-select.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-select.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <li>Press <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>. Now, type <code>/opt/homebrew/lib</code> for M-series Macs or <code>/usr/local/Homebrew/lib</code> for Intel Macs.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-goto.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <li>Now, select <code>libsfml-graphics.&lt;VERSION&gt;.dylib</code>, <code>libsfml-system.&lt;VERSION&gt;.dylib</code>, and <code>libsfml-window.&lt;VERSION&gt;.dylib</code>. Select the version you would like, at the time of this tutorial, SFML 2.6.2 was released. <b>You must select graphics, system, and window. Without these, you cannot create a GUI (Graphical User Interface).</b> Optionally, follow this process again to link audio and networking.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-sel-min.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <li>You should see the libraries shown in Xcode. If your screen looks the same as below, everything linked correctly. <b>Note: If the libraries do not appear, select another tab then return to <i>General</i>. This is a glitch with Xcode 16.0.</b></li>
+                    <img src="../images/xcode/sfml/xcode-sfml-proj-libs.png" alt="Xcode Select Link Library" class="inline-image"/>
+                </ol>
+            </section>
+            
+            <section id="step-5">
+                <h2>Step 5 - Include Header Files <span id="time">(5 minutes)</span></h2>
+                <p>In this section, we will add a <b>System Header Search Path</b>. Without this step, the compiler will not know where the header files are.</p>
+                <p>If you cannot find the header paths, please see<a href="#troubleshooting">Troubleshooting</a>for help!</a></p>
+                <p>If you used Homebrew to install SFML, see the following table.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>M-series Mac Include Path</th>
+                            <th>Intel Mac Include Path</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>/opt/homebrew/include/</td>
+                            <td>/usr/local/Homebrew/include/</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ol>
+                    <li>Select the <b>Build Settings</b> tab.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-select-build-settings.png" alt="Xcode Select Build Settings Tab" class="inline-image"/>
+                    <li>Ensure <b>All</b> and <b>Combined</b> are selected as such.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-select-all-combined.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                    <li>Now, type in the filter field "Header Search Path".</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp.png" alt="Xcode Select Filter Field" class="inline-image"/>
+                    <li>Double click on the <b>System Header Search Paths</b> line.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit.png" alt="Xcode Select Header Search Paths" class="inline-image"/>
+                    <li>Double click on the top line of the pop-over. Type <code>/opt/homebrew/include/</code>. If you manually located the lib folder, it will be the same root path up to <code>lib</code>. Simply change <code>lib</code> to <code>include</code>. For example, if your path is <code>/home/user1/sfml/<b>lib</b>/...</code>, your include folder should be <code>/home/user1/sfml/<b>include</b></code>.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit-line.png" alt="Xcode Select Pop-over" class="inline-image"/>
+                    <li>Click the main window and your project will be configured. You should be ready to use SFML now. Build the project with <kbd>Command</kbd> + <kbd>B</kbd>.</li>
+                </ol>
+            </section>
+            
+            <section id="step-6">
+                <h2>Step 6 - Create Hello, World! Project <span id="time">(2 minutes)</span></h2>
+                <p>In this section, we will modify one of the starter projects SFML has on their website.</p>
+                <ol>
+                    <li>Open main.cpp.</li>
+                    <li>Copy and paste the code below!</li>
+                    <div class="terminal">
+                        <button class="copy-button" onclick="copyToClipboard(this,'sampleCode')">Copy</button>
+                        <pre id="sampleCode"><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;SFML/Graphics.hpp&gt;
+
+int main(int argc, const char * argv[]) {
+    // Create a window
+    sf::RenderWindow window(sf::VideoMode(700, 550), "My First SFML App");
+
+    sf::Vector2u windowSize = window.getSize();
+    const double ballSize = 50;
+
+    // Create a ball
+    sf::CircleShape ball(ballSize);
+    ball.setFillColor(sf::Color::Magenta);
+
+    // Center ball on screen, depending on window and ball size
+    ball.setPosition(windowSize.x / 2 - ballSize,
+                     windowSize.y / 2 - ballSize);
+
+    // Main loop
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+
+        window.clear(sf::Color::Black);
+        window.draw(ball);
+        window.display();
+    }
+
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                    <li>When you successfully run the program, your Xcode window will look something like this.</li>
+                    <img src="../images/xcode/sfml/xcode-sfml-run-success.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                    <li>Congratulations! You have built your first SFML project in Xcode!</li>
+                    <li>You will likely receive an error every once in a while. This states building could produce unreliable results. To resolve this, you need to clean the project. In the menu bar, go to <code>Product > Clean Build Folder...</code>; the keyboard shortcut is <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd></li>
+                    <img src="../images/xcode/sfml/xcode-sfml-run-fail.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                </ol>
+            </section>
+            
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+                <h3>Cannot Locate SFML</h3>
+                <ol>
+                    <li>Attempt to locate SFML by running `brew info`.</li>
+                    <div class="terminal">
+                        <button class="copy-button" onclick="copyToClipboard(this,'sfmlInfo')">Copy</button>
+                        <pre id="sfmlInfo">brew info sfml</pre>
+                    </div>
+                    <li>If Brew did not install it correctly, run <b>brew doctor</b>. If this command returns error(s) you need to address, please reference<a href="brew.sh">brew.sh</a>for assistance.</li>
+                    <div class="terminal">
+                        <button class="copy-button" onclick="copyToClipboard(this,'brewDoc')">Copy</button>
+                        <pre id="brewDoc">brew doctor</pre>
+                    </div>
+                    <li>Attempt to reinstall SFML.</li>
+                    <div class="terminal">
+                        <button class="copy-button" onclick="copyToClipboard(this,'sfmlReinstall')">Copy</button>
+                        <pre id="sfmlReinstall">brew reinstall --force sfml</pre>
+                    </div>
+                    <li>Attempt Step 1 again.</li>
+                    <li>Use <b>find</b> to locate the SFML libraries.<br>
+                        What it does:
+                        <ol style="margin-top:3px;">
+                            <li>Search from the root path (/).</li>
+                            <li>Look for a file type (-type f) and ignore directories.</li>
+                            <li>Match the pattern (libsfml-*.dylib) ignoring case.</li>
+                        </ol>
+                    <div class="terminal">
+                        <button class="copy-button" onclick="copyToClipboard(this,'findLibs')">Copy</button>
+                        <pre id="findLibs">find / -type f -iname "libsfml-*.dylib"</pre>
+                    </div>
+                </ol>
+                <h3>Determine My Architecture</h3>
+                <p>Run the following command, then reference the table to see what your architecture is.</p>
+                <div class="terminal">
+                    <button class="copy-button" onclick="copyToClipboard(this,'getArch')">Copy</button>
+                    <pre id="getArch">uname -m</pre>
+                </div>
+                <br>
+                <div class="equal-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="equal-th">Result</th>
+                                <th class="equal-th">Architecture Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="equal-td">arm64</td>
+                                <td class="equal-td">M-series Mac</td>
+                            </tr>
+                            <tr>
+                                <td class="equal-td">x86_64</td>
+                                <td class="equal-td">Intel Series Mac</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="summary">
+                <h2>Summary</h2>
+                <p>Today, we installed SFML using Homebrew and configured an Xcode project to use the SFML library. In Xcode, we learned how to embed libraries and add header search paths. In terminal, we learned how to locate libraries using<a href="https://ss64.com/mac/find.html">find</a>and determine our architecture using<a href="https://ss64.com/mac/uname.html">uname.</a></p>
+                <h3>Downloads:</h3>
+                <p><a href="../uploads/SFML-Xcode.tar.xz">Project</a></p>
+                <p>
+                    Created: <span id="created">Nov. 26, 2024</span><br>
+                    Updated: <span id="updated">Nov. 26, 2024</span>
+                </p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Kyle Parker. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
