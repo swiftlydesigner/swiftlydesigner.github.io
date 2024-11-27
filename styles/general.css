@@ -208,6 +208,51 @@ footer {
     width: 100%;
 }
 
+.inline-image {
+    width: 75%; /* Set width to 75% of the screen */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Make it a block element */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Table Styling */
+
+table {
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Add border to table cells */
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: crimson; /* Light gray background for header */
+    color: white
+}
+
+tr:hover {
+    background-color: rgba(211, 211, 211, 0.5); /* Highlight row on hover */
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+.equal-table {
+    width: 75%; /* Set table width to 75% of the screen */
+    margin: 0 auto; /* Center the table */
+    table-layout: fixed; /* Ensure fixed layout for even column widths */
+}
+
+.equal-th, .equal-td {
+    width: 50%; /* Set each column to take up 50% of the table width */
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Various span Styling */
+
 #time {
     font-size-adjust: 0.5;
     padding: 0px;
@@ -220,29 +265,4 @@ footer {
 
 #updated {
     font-weight: bold
-}
-
-.inline-image {
-    width: 75%; /* Set width to 75% of the screen */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Make it a block element */
-    margin: 0 auto; /* Center the image */
-}
-
-table {
-    width: 100%; /* Set table width to 100% */
-    border-collapse: collapse; /* Collapse borders */
-}
-th, td {
-    border: 1px solid #ddd; /* Add border to table cells */
-    padding: 8px; /* Add padding to table cells */
-    text-align: left; /* Align text to the left */
-}
-th {
-    background-color: crimson; /* Light gray background for header */
-    color: white
-}
-tr:hover {
-    background-color: rgba(211, 211, 211, 0.5); /* Highlight row on hover */
-    transition: color 0.3s; /* Smooth transition for hover effects */
 }
