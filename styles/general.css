@@ -192,6 +192,7 @@ nav ul li a.active {
 main {
     padding: 20px;
     background: #ffffff;
+    font-size: 18px;
 }
 
 section {
@@ -265,4 +266,20 @@ tr:hover {
 
 #updated {
     font-weight: bold
+}
+
+/* Progres Bar */
+
+.progress-bar {
+    background-color: grey;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    width: 100%;
+}
+
+.progress {
+    background-color: crimson;
+    height: 100%;
+    transition: width 0.3s;
 }
