@@ -283,3 +283,13 @@ tr:hover {
     height: 100%;
     transition: width 0.3s;
 }
+
+.warning {
+    color: #B30000;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #B30000;
+    border-radius: 30px;
+}
