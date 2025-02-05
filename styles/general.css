@@ -172,7 +172,7 @@ nav ul li a {
     display: inline-block; /* Make the link behave like a button */
     padding: 10px 20px; /* Add padding for button effect */
     color: #ffffff; /* Text color */
-    background-color: #dc143c; /* Button background color */
+    background-color: #A42836; /* Button background color */
     text-decoration: none; /* Remove underline */
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
@@ -180,12 +180,12 @@ nav ul li a {
 
 /* Remove background on hover for navigation links */
 nav ul li a:hover {
-    background-color: #840c24;
+    background-color: #671922;
     color: #ffffff;
 }
 
 nav ul li a.active {
-    background-color: #800000; /* Active button color */
+    background-color: #671922; /* Active button color */
     font-weight: bold; /* Make active button bold */
 }
 
