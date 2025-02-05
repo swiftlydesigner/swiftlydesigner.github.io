@@ -44,7 +44,7 @@
             <section id="step-1">
                 <h2>Step 1 - Install Homebrew <span id="time">(~15 minutes)</span></h2>
                 <p>If you do not have Homebrew installed, please open Terminal and run the following command. You can view full installation instructions at<a href="brew.sh">brew.sh.</a></p>
-                <p style="color:red;"><b>Warning: You will need sudo privileges when installing Homebrew.</b></p>
+                <p class="warning">Warning: You will need sudo privileges when installing Homebrew.</p>
                 <div class="terminal">
                     <button class="copy-button" onclick="copyToClipboard(this,'brewInstall')">Copy</button>
                     <pre id="brewInstall">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
@@ -65,11 +65,11 @@
                 <ol>
                     <li>Open Xcode.</li>
                     <li>Select <b>Create New Project...</b></li>
-                    <img src="../images/xcode/xcode-new-proj.png" alt="Xcode New Project Image" class="inline-image">
+                    <img src="../images/xcode/xcode-new-proj.png" alt="Xcode welcome page with `Create New Project...` emphasized" class="inline-image">
                     <li>Navigate to the <b>macOS</b> tab and select the <b>Command Line Tool</b> option. Then, click <b>Next</b>.</li>
-                    <img src="../images/xcode/xcode-new-clt.png" alt="Xcode New CLT Image" class="inline-image">
+                    <img src="../images/xcode/xcode-new-clt.png" alt="`Command Line Tool` template highlighted under the macOS tab with next button focused" class="inline-image">
                     <li>Give the <b>Product Name</b>, <b>Team</b>, and <b>Organization Identifier</b> (typically the reverse of a domain; i.e., com.example). Ensure the Language is set to C++. Then, click <b>Next</b>.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-name.png" alt="Xcode New CLT Image" class="inline-image">
+                    <img src="../images/xcode/sfml/xcode-sfml-name.png" alt="Xcode product creation view with project name field focused, SFML-Xcode selected. Team set to None, Language dropdown selected C++." class="inline-image">
                 </ol>
             </section>
             
@@ -129,16 +129,16 @@
                 <p>Now, that we know what the libraries do, lets link the libraries.</p>
                 <ol>
                     <li>Click the + icon in the <b>Frameworks and Libraries</b> section.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-link-lib.png" alt="Xcode Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-link-lib.png" alt="Xcode project with General tab selected. SFML-Xcode Target selected in left column. Frameworks and Libraries dropdown with Add button boxxed." class="inline-image"/>
                     <li>You will now see this screen which shows macOS Frameworks. Click <b>Add Other...</b> and select <b>Add Files</b>.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-link-lib-select.png" alt="Xcode Select Link Library" class="inline-image"/>
-                    <img src="../images/xcode/sfml/xcode-sfml-finder-select.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-link-lib-select.png" alt="`Add Other...` dropdown selected. `Add Files...` boxxed in." class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-select.png" alt="macOS Finder window shown." class="inline-image"/>
                     <li>Press <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>. Now, type <code>/opt/homebrew/lib</code> for M-series Macs or <code>/usr/local/Homebrew/lib</code> for Intel Macs.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-finder-goto.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-goto.png" alt="Finder GOTO window shown with `/opt/homebrew/lib` typed." class="inline-image"/>
                     <li>Now, select <code>libsfml-graphics.&lt;VERSION&gt;.dylib</code>, <code>libsfml-system.&lt;VERSION&gt;.dylib</code>, and <code>libsfml-window.&lt;VERSION&gt;.dylib</code>. Select the version you would like, at the time of this tutorial, SFML 2.6.2 was released. <b>You must select graphics, system, and window. Without these, you cannot create a GUI (Graphical User Interface).</b> Optionally, follow this process again to link audio and networking.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-finder-sel-min.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-finder-sel-min.png" alt="Finder window with libsfml-graphics.2.6.2.dylib, libsfml-system.2.6.2.dylib, and libsfml-window.2.6.2.dylib selected." class="inline-image"/>
                     <li>You should see the libraries shown in Xcode. If your screen looks the same as below, everything linked correctly. <b>Note: If the libraries do not appear, select another tab then return to <i>General</i>. This is a glitch with Xcode 16.0.</b></li>
-                    <img src="../images/xcode/sfml/xcode-sfml-proj-libs.png" alt="Xcode Select Link Library" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-proj-libs.png" alt="Xcode General Tab showing the three selected libs shown as `Emned & Sign`" class="inline-image"/>
                 </ol>
             </section>
             
@@ -163,15 +163,15 @@
                 </table>
                 <ol>
                     <li>Select the <b>Build Settings</b> tab.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-select-build-settings.png" alt="Xcode Select Build Settings Tab" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-select-build-settings.png" alt="Xcode Build Settings tab boxxed" class="inline-image"/>
                     <li>Ensure <b>All</b> and <b>Combined</b> are selected as such.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-select-all-combined.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-select-all-combined.png" alt="Xcode build settings shown, Select All and Combined filters selected." class="inline-image"/>
                     <li>Now, type in the filter field "Header Search Path".</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp.png" alt="Xcode Select Filter Field" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp.png" alt="Filter field boxxed with `Header Seach Paths` typed." class="inline-image"/>
                     <li>Double click on the <b>System Header Search Paths</b> line.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit.png" alt="Xcode Select Header Search Paths" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit.png" alt="Pop-over window shown for the `System Header Search Path` with an empty list." class="inline-image"/>
                     <li>Double click on the top line of the pop-over. Type <code>/opt/homebrew/include/</code>. If you manually located the lib folder, it will be the same root path up to <code>lib</code>. Simply change <code>lib</code> to <code>include</code>. For example, if your path is <code>/home/user1/sfml/<b>lib</b>/...</code>, your include folder should be <code>/home/user1/sfml/<b>include</b></code>.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit-line.png" alt="Xcode Select Pop-over" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-filter-hsp-edit-line.png" alt="Pop-over window shown for the `System Header Search Path` with /opt/homebrew/include typed." class="inline-image"/>
                     <li>Click the main window and your project will be configured. You should be ready to use SFML now. Build the project with <kbd>Command</kbd> + <kbd>B</kbd>.</li>
                 </ol>
             </section>
@@ -222,10 +222,10 @@ int main(int argc, const char * argv[]) {
                         </code></pre>
                     </div>
                     <li>When you successfully run the program, your Xcode window will look something like this.</li>
-                    <img src="../images/xcode/sfml/xcode-sfml-run-success.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-run-success.png" alt="Xcode IDE during successful run." class="inline-image"/>
                     <li>Congratulations! You have built your first SFML project in Xcode!</li>
                     <li>You will likely receive an error every once in a while. This states building could produce unreliable results. To resolve this, you need to clean the project. In the menu bar, go to <code>Product > Clean Build Folder...</code>; the keyboard shortcut is <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd></li>
-                    <img src="../images/xcode/sfml/xcode-sfml-run-fail.png" alt="Xcode Select All & Combined" class="inline-image"/>
+                    <img src="../images/xcode/sfml/xcode-sfml-run-fail.png" alt="Building could produce unreliable results from a build cycle error." class="inline-image"/>
                 </ol>
             </section>
             
@@ -297,13 +297,13 @@ int main(int argc, const char * argv[]) {
                 <p><a href="../uploads/SFML-Xcode.tar.xz">Project</a></p>
                 <p>
                     Created: <span id="created">Nov. 26, 2024</span><br>
-                    Updated: <span id="updated">Nov. 26, 2024</span>
+                    Updated: <span id="updated">Feb. 04, 2025</span>
                 </p>
             </section>
         </main>
         
         <footer>
-            <p>&copy; 2024 Kyle Parker. All rights reserved.</p>
+            <p>&copy; 2024-2025 Kyle Parker. All rights reserved.</p>
         </footer>
     </body>
 </html>

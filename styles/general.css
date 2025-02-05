@@ -61,7 +61,7 @@ body {
 }
 
 header {
-    background: gray;
+    background: #595959;
     color: #ffffff;
     padding: 20px 0;
     text-align: center;
@@ -123,7 +123,7 @@ ul li:hover, ol li:hover {
 
 /* General link styles */
 a {
-    color: crimson; /* Link color */
+    color: #A42836; /* Link color */
     text-decoration: none; /* Remove underline */
     padding: 5px 10px; /* Add padding for a button-like effect */
     border-radius: 10px; /* Rounded corners */
@@ -148,7 +148,7 @@ ul li a, ol li a {
 }
 
 nav {
-    background: darkgray;
+    background: lightgray;
     color: #ffffff;
     padding: 10px 0;
 }
@@ -172,7 +172,7 @@ nav ul li a {
     display: inline-block; /* Make the link behave like a button */
     padding: 10px 20px; /* Add padding for button effect */
     color: #ffffff; /* Text color */
-    background-color: #dc143c; /* Button background color */
+    background-color: #A42836; /* Button background color */
     text-decoration: none; /* Remove underline */
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
@@ -180,12 +180,12 @@ nav ul li a {
 
 /* Remove background on hover for navigation links */
 nav ul li a:hover {
-    background-color: #840c24;
+    background-color: #671922;
     color: #ffffff;
 }
 
 nav ul li a.active {
-    background-color: #800000; /* Active button color */
+    background-color: #671922; /* Active button color */
     font-weight: bold; /* Make active button bold */
 }
 
@@ -202,7 +202,7 @@ section {
 footer {
     text-align: center;
     padding: 10px 0;
-    background: gray;
+    background: #595959;
     color: #ffffff;
     position: relative;
     bottom: 0;
@@ -230,7 +230,7 @@ th, td {
 }
 
 th {
-    background-color: crimson; /* Light gray background for header */
+    background-color: #A42836;
     color: white
 }
 
@@ -282,4 +282,14 @@ tr:hover {
     background-color: crimson;
     height: 100%;
     transition: width 0.3s;
+}
+
+.warning {
+    color: #B30000;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #B30000;
+    border-radius: 30px;
 }
