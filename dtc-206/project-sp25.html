@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyle Parker - DTC 206 Final</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+        <link rel="stylesheet" href="../styles/general.css">
+            <style>
+                ul ul {
+                    margin-left: 20px; /* Indent nested lists */
+                }
+                ol ul {
+                    margin-left: 20px; /* Indent nested lists */
+                }
+                ul ol {
+                    margin-left: 20px; /* Indent nested lists */
+                }
+                ol ol {
+                    margin-left: 20px; /* Indent nested lists */
+                }
+                .disclaimer {
+                    border: 1px solid #ccc;
+                    padding: 15px;
+                    background-color: #f9f9f9;
+                    margin: 20px 0;
+                    font-family: Arial, sans-serif;
+                }
+                /* Style for the parent ordered list */
+                ol {
+                    list-style-type: none; /* Remove default numbering */
+                    counter-reset: list-counter; /* Initialize a counter */
+                }
+
+                /* Style for the parent list items */
+                ol > li {
+                    counter-increment: list-counter; /* Increment the counter for each parent list item */
+                }
+
+                /* Custom content for parent list items */
+                ol > li::before {
+                    content: "[" counter(list-counter) "] "; /* Format the counter as [n] */
+                }
+
+                .gallery {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    max-width: 95%; /* Adjust as needed */
+                    height: auto;
+                    margin: auto;
+                }
+                .gallery figure {
+                    width: calc(50% - 10px);; /* Adjust width to fit two figures per row */
+                    margin-bottom: 10px; /* Space between rows */
+                    text-align: center; /* Center align the caption */
+                }
+                .gallery img {
+                    width: 100%; /* Make image fill the figure */
+                    height: auto; /* Maintain aspect ratio */
+                    margin-bottom: 10px; /* Space between rows */
+                 }
+                header {
+                    display: flex; /* Use Flexbox for layout */
+                    justify-content: space-between; /* Space between items */
+                    align-items: center; /* Center items vertically */
+                    padding: 20px; /* Add some padding */
+                }
+
+                .main-left {
+                    flex: 0 0 66%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            </style>
+    </head>
+    <script>
+        $(document).ready(function() {
+            var text = "https://kyleparker.me/dtc-206/project-sp25.html";
+            $('#qrcode').qrcode(text);
+        });
+    </script>
+    <body>
+        <header>
+            <div class="main-left">
+                <h1>Kyle Parker</h1>
+                <p>DTC 206 Final Project Report</p>
+            </div>
+            <div>
+                <div id="qrcode" ></div>
+                <p>https://kyleparker.me/dtc-206/project-sp25.html</p>
+            </div>
+        </header>
+
+        <main>
+            <section id="Definitions">
+                <h2>Definitions</h2>
+                <ul>
+                    <li>ACCS - Automated closed captioning system</li>
+                    <li>CC - Closed captioning</li>
+                    <li>CI - Confidence interval - Indicates the range of values that likely includes the true average of a parameter.</li>
+                    <li>OOBE - Out-of-Box Experience</li>
+                    <li>Real-time - Capability to process data and produce a response within a strict time constraint</li>
+                    <li>Whisper - OpenAI's automatic speech recognition system, for translating spoken language</li>
+                </ul>
+            </section>
+
+            <section id="Purpose">
+                <h2>Purpose</h2>
+                <p>
+                The purpose of this project is to identify and spark investigation into the accuracy and validation of models used in automated closed captioning systems (ACCSs), both live and recorded. There has been academic, professional, and empirical research conducted surrounding this topic. In [4], a team in India combined Whisper and other models to create a multilingual system with extreme accuracy (98.4%). However, a large drawback of this model is the lack of support for real-time captioning. This means industries such as sports and live TV cannot benefit from this astonishingly reliable model. In the coming years (or months realistically), the inability to process live streams will likely be resolved. Other findings revealed that the United States does not require adherence to protocols or laws during live closed captioning (CC). Instead, the US provides "best industry practices" without conducting qualitative measurements. Countries such as Canada and the UK require live CC to perform at or above qualitative marks [5]. More recently, companies such as Max have started to highlight who is talking. [5] mentioned that ACCSs do not commonly indicate the speaker, causing confusion and frustration for those who rely on CCs. Max has recently placed CC blocks overlaying the active speaker, clearly showing who the speaker is. However, this could have readability consequences in action scenes with speech.
+                </p>
+            </section>
+
+            <section id="Project Intention">
+                <h2>Project Intention</h2>
+                <p>
+                Automated closed captioning systems (ACCSs) produce captions without required user intervention. For the typical person without an accent, these systems work efficiently, only making minor grammatical errors. However, individuals who have moderate to heavy accents may experience significant inaccuracies in closed captioning. This limitation also applies to people with access to poor recording equipment or inadequate production software. The proposed program is not designed for direct integration in ACCSs. Rather, it is intended to open investigation into the accuracy, reliability, and accessibility of ACCSs. The program will translate audio from a video to color-coded text indicating the confidence interval (CI) of each word on line 1. A second line will show the first line after being processed by a natural language processor, capitalizing proper nouns. The third and last line will show the second line's processing with line 1's CIs. This approach seeks to enhance the accuracy and reliability of ACCSs for everybody.
+                </p>
+                <h3>Research Question</h3>
+                <p>
+                How can automated closed captioning systems become more accurate and reliable for spearkers all languages and accents?
+                </p>
+            </section>
+
+            <section id="Process">
+                <h2>Process</h2>
+                <div class="disclaimer">
+                    <p>
+                    TL;DR: Write an application targeting iOS in SwiftUI that utilizes the NaturalLanguage and Speech frameworks to open a movie file and extract speech. Another section analyzes the transcribed speech for the accuracy of proper noun identification. Permit user entry on the last line to enable modification of the input.
+                    </p>
+                </div>
+                <h3>Tools Used:</h3>
+                <ul>
+                    <li>Xcode (Integrated Development Environment)</li>
+                    <li>MacBook Pro M1 Max (Host Machine)</li>
+                    <li>Swift (Programming Language)</li>
+                    <li>SwiftUI (User Interface Framework)</li>
+                    <li>Speech Framework (Translates spoken words into text)</li>
+                    <li>Natural Language Framework (Validates transcribed text for proper nouns)</li>
+                    <li>AVKit (Used for opening videos and generating thumbnails)</li>
+                </ul>
+                <p>
+                This project is an application targeting iOS devices, written in SwiftUI for cross-platform compatibility. As mentioned, the following Apple-provided frameworks are used: AVKit, Speech, and Natural Language. The application displays word-by-word details in 5-second intervals, showing each predicted word, possible alternative words, and the confidence interval (CI) of the predicted word. Colors range from green to red, where pure green indicates 100% confidence and pure red indicates 0% confidence. Each row displays the words spoken in a given 5-second segment of the video, similar to a closed captioning system. The average CI is provided for each transcription. At the top of Image 1, a toggle is available to show all predicted translations, and the average is also displayed for all predicted translations.
+                </p>
+
+                <figure style="text-align: center;">
+                    <img src="trans.png" alt="Computer application indicating words in color-coded boxes with CIs" style="width: 90%; height: auto;"/>
+                    <figcaption>Image 1: Computer application indicating words in color-coded boxes with CIs</figcaption>
+                </figure>
+
+                <p>
+                In Image 2, the project shows the Natural Language aspect where it validates each word based on the input sentence. If the model produces the same output as the input (output of the transcription), the box will be highlighted green. If the box is red, that means a word has incorrect case. Additionally, the Natural Language Tag (NLTag) name is shown at the bottom of each word, indicating the identified type.
+                </p>
+                <figure style="text-align: center;">
+                    <img src="enhanced.png" alt="Computer application indicating words in color-coded boxes with word classification" style="width: 90%; height: auto;"/>
+                    <figcaption>Image 2: Computer application indicating words in color-coded boxes with word classification</figcaption>
+                </figure>
+            </section>
+
+            <section id="findings">
+                <h2>Findings</h2>
+                <h3>Conclusion</h3>
+                <p>
+                It was concluded that no error was determined by validating the input from the transcription with the Natural Language framework. Likely, this is due to both frameworks being from Apple. As such, another natural language processor should be utilized for validation.
+                </p>
+                <h3>Inaccuracies of Transcription</h3>
+                <p>
+                The Terminator was referenced in a video, but it was not capitalized or treated as a proper noun. It was thought to be a noun. There were a few instances where identification was slightly off. A person's name was the first spoken word, and their first name, Jim, was classified as "otherWord" when analyzed word-by-word. However, in the context of a sentence and a last name, it was always classified as a (Proper) noun.
+                </p>
+
+                <h3>Testing Results</h3>
+                <table>
+                    <tr>
+                        <th>Accent</th>
+                        <th>Duration</th>
+                        <th>Accuracy</th>
+                        <th>Gender</th>
+                    </tr>
+                    <tr>
+                        <td>African [Heavy]</td>
+                        <td>6 seconds</td>
+                        <td>70.5833%</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td>African [Heavy]</td>
+                        <td>18 seconds</td>
+                        <td>67.75187%</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td>Arnold Schwarzenegger (Austria) [Light-Moderate]</td>
+                        <td>30 seconds</td>
+                        <td>75.88453%</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td>Indian [Moderate-Heavy]</td>
+                        <td>12 seconds</td>
+                        <td>72.82266%</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td>British [Light]</td>
+                        <td>9 seconds</td>
+                        <td>63.27279%</td>
+                        <td>Female</td>
+                    </tr>
+                    <tr>
+                        <td>Brazilian [Light]</td>
+                        <td>13 seconds</td>
+                        <td>77.54867%</td>
+                        <td>Male</td>
+                    </tr>
+                </table>
+
+                <h4>How Average Confidence Intervals (CIs) Were Collected</h4>
+                <p>
+                Results were captured by a screenshot of the transcription. The CI was calculated through a non-weighted method where each word has a weight of 1. A non-weighted approach was preferred as weighted averages take into account the type of word, length, and placement. This is too complicated to calculate with accuracy without prior knowledge of linguistics. A simple weighted approach could be based on the length of the word, but this quickly proved inaccurate as some phrases were grouped into a single word, such as "certain sayings and orders" from Image 1. These four words are important but should not drag down the whole sentence with a CI of 0.33%. As such, the non-weighted approach was taken.
+                </p>
+                <h4>Analyzing the Results</h4>
+                <p>
+                There are many factors to consider. Each of the listed results is a product of varying rates of speech, the weight of the speaker's accent, the pitch of the speaker, and the variety of words or word sounds. These factors are all critical when identifying speech and parts of speech. As such, models need to account for the vast range of input differences.
+                </p>
+                <p>
+                This data has the benefit of ensuring the model is trained properly to identify many different inputs. The input video duration also plays a role in the accuracy of words. However, no inputs had an average confidence interval (CI) over 80%. Looking at the results, there could be a correlation between the rate of speech (words-per-minute), gender, and the similarity of words directly following one another.
+                </p>
+                <p>
+                Some bias that could occur in these models results from Apple training models and continually refining these models. As Apple claims to provide extreme privacy and enhanced security, opt-in messages are frequently prompted, which may lead some users to become confused and send voice recordings out of fear that they cannot use Siri or dictation features. Additionally, Apple has become much larger in the TV/movie scene, where they have access to hundreds of hours of footage for a single show or movie. This greatly expands their training and validation sets. As such, some movie stars may inadvertently have their voices used for training without their consent. For example, Arnold Schwarzenegger may be included in the training set, which could explain his 75% average CI.
+                </p>
+                <table style="width: 95%; margin: auto; border-collapse: collapse;">
+                    <tr>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="african-male-heavy-long.png" alt="Best transcription for an African male speaking English in a longer video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 1: Best transcription for an African male speaking English in a longer video.</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="african-male-heavy.png" alt="Best transcription for an African male speaking English in a short video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 2: Best transcription for an African male speaking English in a short video.</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="alsh-male-light-heavy.png" alt="Best transcription for Arnold Schwarzenegger speaking English in a short video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 3: Best transcription for Arnold Schwarzenegger speaking English in a short video.</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="brazil-male-light.png" alt="Best transcription for a Brazilian male speaking English in a short video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 4: Best transcription for a Brazilian male speaking English in a short video.</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="british-female-light-tongue-twister.png" alt="Best transcription for a British female speaking English in a short video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 5: Best transcription for a British female speaking English in a short video.</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 45%; text-align: center; vertical-align: top; padding: 10px;">
+                            <figure>
+                                <img src="indian-male-mod-heavy.png" alt="Best transcription for an Indian male speaking English in a short video." style="width: 100%; height: auto; border-radius: 5px;">
+                                    <figcaption>Image 6: Best transcription for an Indian male speaking English in a short video.</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section id="future-work">
+                <h2>Future Work (If This Project Were to Continue)</h2>
+                <p>
+                Enable the ability to select a word, which will focus that line in the edit section. Changes will reflect in the transcription and hold a confidence interval (CI) of 1, indicating that it was edited. This would allow for easy editing of captions for media creators on YouTube and other video platforms. Optionally, manually made edits could be shared with the video platform service to improve models.
+                </p>
+                <p>
+                This system would allow creators to focus on sections with lower CIs to eliminate hours of wasted work on correct translations. For example, critical videos could use a CI of 0.9 (90%) to indicate that the translation is correct and investigate everything lower than that. For everyday entertainment, creators could focus on CI values less than 0.8 (80%) or 0.7 (70%).
+                </p>
+            </section>
+
+            <section id="next-steps-in-the-industry">
+                <h2>Next Steps in the Industry</h2>
+                <p>Here are key concepts that need to be addressed for training models:</p>
+                <ul>
+                    <li>Disclosure of training sources and methodologies</li>
+                    <li>Diversity in training datasets</li>
+                    <li>Rigorous validation of training sets</li>
+                </ul>
+
+                <p>Here are key concepts that need to be addressed for automated closed captioning systems:</p>
+                <ul>
+                    <li>Integration of live closed captioning systems into more programs</li>
+                    <li>Auditing of both live and recorded closed captioning systems</li>
+                    <li>Standardization of closed captioning systems in the United States</li>
+                </ul>
+                <p>
+                There is substantial research in this area. Research should become a normal part of the evolution of key concepts in automated closed captioning. Simply improving existing infrastructure will not suffice. An analysis of the current system should be conducted, along with research on customer demand and strategies to stay ahead of future roadblocks. Without considering these factors, systems will always fall short.
+                </p>
+                <p>
+                If these systems are for a specialized field, then the model needs to accurately depict when to capitalize a word or not. While everyday text may use lowercase "state," in the context of SwiftUI, "@State" is correct, with an uppercase "S" and an at sign preceding "State." Another important distinction is when a developer may say, "at state X, we observe behavior B." In this context, "at state" does not imply "@State", but rather refers to "at state", spelled out and lowercased. There are many similar exceptions in every field.
+                </p>
+            </section>
+
+            <section id="download">
+                <h2>Download</h2>
+                <div class="disclaimer">
+                    <strong>Disclaimer:</strong><br>
+                    By downloading and using the software attached, you acknowledge and agree to the following terms:
+                    <ul>
+                        <li><strong>No Liability:</strong> The author or distributor of this software is not liable for any damages, including but not limited to direct, indirect, incidental, or consequential damages, arising from the use or inability to use the software.</li>
+                        <li><strong>Use at Your Own Risk:</strong> You understand that downloading and using this software is at your own risk. It is your responsibility to ensure that your machine meets the necessary requirements and to take appropriate precautions.</li>
+                        <li><strong>Copyright Notice:</strong> The software may have been tested using videos obtained from the internet. Copyright applies to these videos, and their use is unrelated to the software itself. It is your responsibility to ensure compliance with copyright laws when using any video content.</li>
+                    </ul>
+                </div>
+                <h3>Install Directions</h3>
+                <p>
+                Download the app from the link below. Then Open the dtc206-final.ipa file. It will then install the .app into /Applications.
+                </p>
+                <p><a href="dtc206-final.ipa">Apple Silicon Application Download</a> (Only available on M-series mac)</p>
+            </section>
+
+            <section id="resources">
+                <h2>Resources</h2>
+                <ol>
+                    <li>Video "How You Can Reduce Your ACCENT in English (...and Should You?)"<a href="https://youtu.be/ccm0uSPVgck ">View on YouTube</a></li>
+                    <ul>
+                        <li>Example of Arnold Schwarzenegger's accent and a light non-native speaking accent.</li>
+                        <li>Features examples of Brazilian male speech with a light accent.</li>
+                    </ul>
+                    <li>Video "How to get a Better English accent 👄 Pronunciation Practice Every Day!"<a href="https://youtu.be/-P-5RC17BHw ">View on YouTube</a></li>
+                    <ul>
+                        <li>Used for a female with a British accent speaking tongue twisters.</li>
+                    </ul>
+                    <li>Video "students-protests-use-of-afrikaans-as-a-teaching-language-in-south-africa"<a href="https://youtu.be/dolLuO9hM5s">Description</a></li>
+                    <ul>
+                        <li><b>Note: This video contains political points of view.</b></li>
+                        <li>Content was used for purposes of an African accent.</li>
+                    </ul>
+                    <li>H. Shah, M. Patel and R. K. Gupta, "Enhancing Multimedia Accessibility: Automated Video Captioning and Translation System Using OpenAI Whisper," in Asian Conference on Intelligent Technaology (ACOIT), Jiaxing, 2024.</li>
+                    <li>M. Chavez, M. Feanny, M. Seita, B. Thompson, K. Delk, S. Officer, A. Glasser, R. Kushalnagar and C. Vogler, "How Users Experience Closed Captions on Live Television: Quality Metrics Remain a Challenge," in CHI, Washingtion, DC, 2024.</li>
+                    <li>P. Millett, "Accuracy of Speech-to-Text Captioning for Students Who are Deaf or Hard of Hearing," Journal of Educational, Pediatric & (Re)Habilitative Audiology, vol. 25, 2021.</li>
+
+                </ol>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024-2025 Kyle Parker. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
