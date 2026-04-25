@@ -1,0 +1,246 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#60a5fa;
+  --muted:#94a3b8;
+  --text:#e6eef8;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg),#071028 120%);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+}
+
+.container{
+  width:100%;
+  max-width:900px;
+}
+
+h1{
+  margin:0 0 16px 8px;
+  font-size:1.6rem;
+  color:var(--accent);
+}
+
+.schedule{
+  display:grid;
+  gap:12px;
+}
+
+.event{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:10px;
+  box-shadow:0 6px 18px rgba(3,6,16,0.6);
+}
+
+.event-info{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.title{
+  font-weight:600;
+  font-size:1rem;
+}
+
+.time{
+  font-size:0.9rem;
+  color:var(--muted);
+}
+
+.countdown{
+  min-width:110px;
+  text-align:right;
+  font-family:monospace;
+  color:var(--accent);
+  font-weight:600;
+}
+
+.event.past{
+  opacity:0.6;
+}
+
+.footer{margin-top:12px;color:var(--muted);font-size:0.85rem;padding-left:8px}
+
+.page-title{
+    margin:0 0 12px 8px;
+    font-size:2.2rem;
+    color:var(--accent);
+    letter-spacing:0.2px;
+    font-weight:700;
+    padding-bottom: 15px
+}
+
+.links{ display:flex; flex-direction:column; gap:6px; margin-left:16px; align-items:flex-end; min-width:160px; }
+.links a{ color:var(--accent); text-decoration:none; font-size:0.9rem; background:rgba(96,165,250,0.06); padding:6px 8px; border-radius:8px; border:1px solid rgba(96,165,250,0.08); }
+.links .address{ color:var(--muted); font-size:0.9rem; padding:6px 8px; border-radius:8px; }
+
+/* allow page scrolling and ensure container can grow */
+html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+/* allow links area to wrap and not overflow horizontally */
+.links, .quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+/* allow long anchors to wrap rather than force horizontal scroll */
+.links a, .quick-links a {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* if .container or .schedule used fixed height, remove it or allow auto */
+.container, .schedule {
+    max-height: none;
+    overflow: visible;
+}
+
+/* Download All .ics button */
+#download-all-ics {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(96,165,250,0.06));
+    color: var(--accent);
+    border: 1px solid rgba(96,165,250,0.14);
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(3,6,16,0.35);
+    transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+    white-space: nowrap;
+}
+
+#download-all-ics:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(3,6,16,0.45);
+}
+
+#download-all-ics:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(3,6,16,0.35);
+}
+
+#download-all-ics:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(96,165,250,0.12);
+}
+
+/* Positioning: place button under schedule and center */
+.controls {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Make button responsive: full width on narrow screens */
+@media (max-width: 520px) {
+    #download-all-ics {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Small icon style option (if you add an SVG inside the button) */
+#download-all-ics {
+    display: block;
+    width: calc(100% - 32px); /* subtract same horizontal padding as .event if needed */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* Minor spacing adjustment for quick-links inside .links */
+.quick-links, .links {
+    gap: 8px;
+}
+
+.quick-links .address {
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: rgba(255,255,255,0.02);
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+/* Responsive layout for narrow screens */
+@media (max-width: 720px) {
+    body { padding: 16px; }
+    .container { padding: 0 8px; }
+    .page-title { font-size: 1.6rem; margin-left: 6px; padding-bottom: 10px; }
+    h1 { font-size: 1.1rem; margin-left: 6px; }
+    .schedule { gap: 10px; }
+    .event {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px;
+    }
+    .event-info { width: 100%; gap: 10px; align-items:flex-start; }
+    .title { font-size: 0.98rem; }
+    .time { font-size: 0.86rem; }
+    .countdown { min-width: 0; width: 100%; text-align:left; font-size:0.95rem; }
+    .links { flex-direction: row; flex-wrap: wrap; align-items:center; justify-content:flex-start; gap:8px; margin-left:6px; min-width:0; }
+    .links a, .links .address { font-size:0.88rem; padding:6px 10px; }
+    .controls { flex-direction: column; align-items: stretch; gap:10px; margin-top:14px; padding: 0 6px; }
+    #download-all-ics { width:100%; justify-content:center; }
+    .footer { padding-left:6px; font-size:0.82rem; }
+}
+/* Extra-small screens */
+@media (max-width: 420px) {
+    .page-title { font-size: 1.3rem; }
+    h1 { font-size: 1rem; }
+    .event { padding: 10px; border-radius: 8px; }
+    .title { font-size: 0.95rem; }
+    .time { font-size: 0.82rem; }
+    .countdown { font-size:0.9rem; }
+    .links a, .quick-links a { font-size:0.85rem; padding:6px 8px; }
+}
+/* Improve tappable targets and spacing */
+button, a, .links a, #download-all-ics {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.04);
+}
+/* Ensure images/SVGs scale inside events */
+.event img, .event svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+/* Prevent overflow from long words inside titles */
+.title, .time, .countdown {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+/* Make cards slightly larger on small screens for readability */
+@media (max-width: 520px) {
+    .event { border-radius: 12px; }
+}
+/* Optional: stack links and schedule for very narrow devices */
+@media (max-width: 360px) {
+    .container { max-width: 100%; }
+    .links { justify-content: center; }
+}
