@@ -244,3 +244,9 @@ button, a, .links a, #download-all-ics {
     .container { max-width: 100%; }
     .links { justify-content: center; }
 }
+
+a{
+    color: tan;
+    text-decoration: none;
+    font-style: italic;
+}
